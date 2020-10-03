@@ -46,6 +46,39 @@
         All Match List 
       </h1>
     </section>
+    <?php
+    if($_SESSION['TYPE'] == '1')
+    {
+    ?>
+    <div class="alert alert-success alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><i class="icon fa fa-check"></i> Alert!</h4>
+      Status change Done!.
+      </div>
+    <?php
+    $_SESSION['TYPE'] = "";
+    }else if($_SESSION['TYPE'] == '0')
+    {
+    ?>
+    <div class="alert alert-success alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><i class="icon fa fa-check"></i> Alert!</h4>
+      Status change Done!.
+      </div>
+    <?php
+    $_SESSION['TYPE'] = "";
+    }else if($_SESSION['TYPE'] == '3')
+    {
+    ?>
+    <div class="alert alert-danger alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><i class="icon fa fa-check"></i> Alert!</h4>
+      Grand Leage not found.
+      </div>
+    <?php
+    $_SESSION['TYPE'] = "";
+    }
+    ?>
 
     <section class="content-header">
 
@@ -54,7 +87,7 @@
     </section>
 
     <!-- Modal -->
-    <form action="" method="post">
+    <form action="../code/match_status" method="post">
     <div id="myModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
 
@@ -75,10 +108,11 @@
                 <option value="2">Move to Complete</option>
                 <option value="1">Move to Upcoming</option>
             </select>
+             <input type="hidden" name="link" value="match_list">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="Submit" class="btn btn-default" data-dismiss="modal">Submit</button>
+            <input type="Submit" class="btn btn-default">
           </div>
         </div>
 

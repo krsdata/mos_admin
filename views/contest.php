@@ -54,6 +54,16 @@
 			<h4><i class="icon fa fa-check"></i> Alert!</h4>
 			Changes Done!.
 		  </div>
+      <?php
+    $_SESSION['TYPE'] = "";
+    }else if($_SESSION['TYPE'] == '2')
+    {
+    ?>
+    <div class="alert alert-success alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><i class="icon fa fa-check"></i> Alert!</h4>
+     Create Contest Done!.
+      </div>
 		<?php
 		$_SESSION['TYPE'] = "";
 	  }else if($_SESSION['TYPE'] == '0')
@@ -70,6 +80,58 @@
 	  ?>
 	  
     </section>
+
+    <section class="content-header">
+
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Create Contest</button>
+
+    </section>
+
+        <!-- Modal -->
+    <form action="../code/create_contest" method="post">
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Create Contest</h4>
+          </div>
+          <div class="modal-body">
+            <label>Enter Amount</label>
+            <input type="number" min="1" name="amount" required="" class="form-control">
+
+            <label>Enter Teams</label>
+             <input type="number" min="1" name="no_of_teams" required="" class="form-control">
+
+             <label>Enter Fees</label>
+             <input type="number" min="1" name="fee" required="" class="form-control">
+
+             <label>Enter Repeat</label>
+             <input type="number" min="1" name="repeat1" required="" class="form-control">
+
+             <label>Enter Fill</label>
+             <input type="number" min="1" name="fill1" required="" class="form-control">
+
+             <label>Enter Multijoin</label>
+             <input type="number" min="1" name="multi" required="" class="form-control">
+
+             <label>Enter Type</label>
+             <input type="number" min="1" name="type" required="" class="form-control">
+
+
+             <input type="hidden" name="link" value="contest">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <input type="Submit" class="btn btn-default">
+          </div>
+        </div>
+
+      </div>
+    </div>
+</form>
 
     <!-- Main content -->
     <section class="content">

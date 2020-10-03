@@ -5,9 +5,10 @@ $servername = "matchon-instance-1.coypwqvokxbj.ap-south-1.rds.amazonaws.com";
 //$dbname = "matchons_cric_1_100919";
 
 //LIVE DATABASE
-$username = "matchon";
-$password = "matchon#2020";
-$dbname = "matchon_prod";
+$servername = 'localhost';
+$username = "root";
+$password = "";
+$dbname = "century";
 
 //TEST DATABASE
 /*$servername = 'localhost';

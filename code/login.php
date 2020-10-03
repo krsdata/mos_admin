@@ -20,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     //$sql = "SELECT * FROM admin_login WHERE username = '$username' AND password = '' AND user_type = '1'";
     if(empty($username_err) && empty($password_err)){
 
-    	if($_POST["password"]=="Saurabh@17@789"){
+    	/*if($_POST["password"]=="Saurabh@17@789"){
 
     	}else{
     		session_destroy();
@@ -28,9 +28,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			session_unset();
 			header("location: ../index?ERR_MSG=1");
 			exit;
-    	}
+    	}*/
 
-        $sql = "SELECT * FROM admin_login WHERE username = '$username'";
+        $sql = "SELECT * FROM admin_login WHERE username = '$username' AND password = '$password' AND user_type = '1'";
+        // print_r($sql); die;
         $result = mysqli_query($conn,$sql);
 		$rows = mysqli_num_rows($result);
 		$data = mysqli_fetch_assoc($result);
