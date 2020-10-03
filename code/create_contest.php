@@ -12,7 +12,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && $_SESSION["username"] != ""){
         $type 		 = trim($_POST["type"]);
         $link 		 = trim($_POST["link"]);
     
-		$qry = "INSERT INTO `contests`(`amount`, `no_of_teams`, `fee`, `repeat1`, `fill1`, `multi`, `type`) VALUES ('$amount','$no_of_teams','fee','$repeat1','$fill1','$multi','$type')";		
+		$qry = "INSERT INTO `contests1`(`amount`, `no_of_teams`, `fee`, `repeat1`, `fill1`, `multi`, `type`) VALUES ('$amount','$no_of_teams','fee','$repeat1','$fill1','$multi','$type')";		
 		mysqli_query($conn,$qry);
 		$_SESSION['TYPE'] = "2";
 		mysqli_close($conn);

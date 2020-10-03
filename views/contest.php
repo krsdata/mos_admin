@@ -147,7 +147,7 @@
             <!-- /.box-header -->
 			<?php
 			require_once "../db/config.php";
-			$sql = "SELECT * FROM contests1";
+			$sql = "SELECT * FROM contests1 ORDER BY contests_id desc";
 			$result = mysqli_query($conn,$sql);
 			$num = mysqli_num_rows($result);
 			?>
