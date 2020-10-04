@@ -30,6 +30,8 @@
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -90,9 +92,25 @@
 			$num = mysqli_num_rows($result);
 			?>
             <div class="box-body">
+            	<form action="../code/multi_verification" method="post">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
+                	<tr>
+                		<td colspan="2">
+                			
+						  <input type="hidden" name="link" value="pending">
+						  <select name="status" required="">
+					  			<option value="">Select</option>
+					  			<option value="2">Verify</option>
+					  			<option value="3">Reject</option>
+					  		</select>
+
+					  		<button type="submit" class="btn btn-block btn-success" onclick="return confirm('Are you sure?');" >Submit</button>
+          
+                		</td>
+                	</tr>
                 <tr>
+                	<th><input type="checkbox" id="checkAll"></th>
                   <th>#No.</th>
                   <th>Pan Detail</th>
                   <th>Bank Detail</th>
@@ -115,6 +133,10 @@
 					$usr_bank_proofImage = $rows['usr_bank_proofImage'];
 					?>
 					<tr>
+					  <td><input type="checkbox" class="checkItem" name="usr_id[]" value="<?php echo $rows['usr_id'];?>">
+					</td>
+					 <input type="hidden" name="email" value="<?php echo $rows['email1'];?>">
+					
 					  <td><?php echo $i;?></td>
 					  <td>
 					  	<div class="btn-group">
@@ -156,6 +178,7 @@
 					  	
 					  		
 					  </td> -->
+					   </form>
 					  <td><form action="../code/verify" method="post"><textarea name="remark"></textarea></td>
 					  <td>
 						  <input type="hidden" name="usr_id" value="<?php echo $rows['usr_id'];?>">
@@ -185,6 +208,7 @@
                 </tbody>
                 
               </table>
+
             </div>
             <!-- /.box-body -->
           </div>
@@ -220,6 +244,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
 <!-- page script -->
+
 <script>
   $(function () {
     $('#example1').DataTable()
@@ -233,5 +258,19 @@
     })
   })
 </script>
+<script type="text/javascript">
+        	$(document).ready(function(){
+        		$("#checkAll").click(function(){
+        			if($(this).is(":checked")){
+
+        				$(".checkItem").prop('checked', true);
+        			}else{
+
+        				$(".checkItem").prop('checked', false);
+        			}
+
+        		});
+        	});
+        </script>
 </body>
 </html>

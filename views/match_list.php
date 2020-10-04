@@ -75,6 +75,17 @@
       <h4><i class="icon fa fa-check"></i> Alert!</h4>
       Grand Leage not found.
       </div>
+      <?php
+    $_SESSION['TYPE'] = "";
+    }else if($_SESSION['TYPE'] == '4')
+    {
+    ?>
+    <div class="alert alert-success alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><i class="icon fa fa-check"></i> Alert!</h4>
+      Update Susscefully Match Date & Time.
+      </div>
+
     <?php
     $_SESSION['TYPE'] = "";
     }
@@ -83,6 +94,8 @@
     <section class="content-header">
 
         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Change Match Status</button>
+
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#creatematch">Create Match</button>
 
     </section>
 
@@ -119,6 +132,45 @@
       </div>
     </div>
 </form>
+
+
+
+<!-- Modal -->
+    <form action="../code/create_match" method="post">
+    <div id="creatematch" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Create Match</h4>
+          </div>
+           <div class="modal-body">
+            <label>Enter Match Id</label>
+            <input type="number" min="1" name="match_id" required="" class="form-control">
+
+            <label>Match Start Date & Time</label>
+            <input type="datetime-local" name="mat_startdate" required="" class="form-control">
+
+             <label>Match End Date & Time</label>
+            <input type="datetime-local" name="mat_enddate" required="" class="form-control">
+
+
+             <input type="hidden" name="link" value="match_list">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <input type="Submit" class="btn btn-default">
+          </div>
+        </div>
+
+      </div>
+    </div>
+</form>
+
+
+
     <!-- Main content -->
     <section class="content">
       <div class="row">
