@@ -96,9 +96,38 @@
 			$num = mysqli_num_rows($result);
 			?>
             <div class="box-body">
+           <form action="../code/multi_withdraw" method="post">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
+                  <tr>
+                    <td colspan="2">
+                     
+                      <select name="status" required="">
+                          <option value="">Select</option>
+                          <option value="2">Withdraw</option>
+                          <option value="3">Reject</option>
+                          <option value="4">Refund</option>
+                        </select>
+                        </td>
+
+                        <td colspan="1">
+                        <select name="BANK" required="">
+                          <option value="">Select</option>
+                          <option value="P">PAYTM</option>
+                          <option value="A">ACCOUNT</option>
+                          <option value="N">N/A</option>
+                        </select>
+                      </td>
+
+                      <td colspan="1">
+                      <button type="submit" onclick="return confirm('Are you sure?');" class="btn btn-block btn-success" >Submit</button>
+                    </td>
+          
+                    
+                  </tr>
+
                 <tr>
+                  <th><input type="checkbox" id="checkAll"></th>
                   <th>#No.</th>
                   <th>UserID</th>
                   <th>EmailID</th>
@@ -127,7 +156,16 @@
 					$result1 = mysqli_query($conn,$sql1);
 					$row1 = mysqli_fetch_assoc($result1);
 					?>
+
 					<tr>
+            <td><input type="checkbox" class="checkItem" name="usr_id[]" value="<?php echo $rows['userid'];?>">
+          </td>
+              <input type="hidden" name="amount" value="<?php echo $rows['amount'];?>">
+              <input type="hidden" name="date1" value="<?php echo $rows['date1'];?>">
+              <input type="hidden" name="email" value="<?php echo $row1['email1'];?>">
+              <input type="hidden" name="mobile" value="<?php echo $row1['mobile'];?>">
+              <input type="hidden" name="link" value="withdraw_pending">
+
 					  <td><?php echo $i;?></td>
 					  <td><?php echo $rows['userid'];?></td>
 					  <td><?php echo $row1['email1'];?></td>
@@ -137,19 +175,20 @@
 					  <td><?php echo $trans345;?></td>
 					  <td><?php echo $rows['amount'];?></td>
 					  <td><?php echo $rows['date1'];?></td>
+            </form>
 					  <td>
 					  	<form action="../code/withdraw" method="post">
 						  <input type="hidden" name="usr_id" value="<?php echo $rows['userid'];?>">
               <input type="hidden" name="amount" value="<?php echo $rows['amount'];?>">
               <input type="hidden" name="date1" value="<?php echo $rows['date1'];?>">
               <input type="hidden" name="email" value="<?php echo $row1['email1'];?>">
-			  <input type="hidden" name="mobile" value="<?php echo $row1['mobile'];?>">
+			         <input type="hidden" name="mobile" value="<?php echo $row1['mobile'];?>">
 						  <input type="hidden" name="link" value="withdraw_pending">
 						  <select name="status" required="">
 					  			<option value="">Select</option>
 					  			<option value="2">Withdraw</option>
 					  			<option value="3">Reject</option>
-                    			<option value="4">Refund</option>
+                  <option value="4">Refund</option>
 					  		</select>
                 <select name="BANK" required="">
                   <option value="">Select</option>
@@ -224,5 +263,21 @@
     })
   })
 </script>
+
+<script type="text/javascript">
+          $(document).ready(function(){
+            $("#checkAll").click(function(){
+              if($(this).is(":checked")){
+
+                $(".checkItem").prop('checked', true);
+              }else{
+
+                $(".checkItem").prop('checked', false);
+              }
+
+            });
+          });
+        </script>
+
 </body>
 </html>

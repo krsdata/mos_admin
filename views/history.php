@@ -97,7 +97,14 @@
 					  <td><?php echo $rows['amount'];?></td>
 					  <td><?php echo $rows['type'];?></td>
 					  <td><?php echo $rows['contestid'];?></td>
-					  <td><?php echo $rows['date1'];?></td>
+           <?php
+              $utc = $rows['date1'];
+              $dt = new DateTime($utc);
+              $tz = new DateTimeZone('Asia/Kolkata');
+              $dt->setTimezone($tz);
+              $dt->format('Y-m-d H:i:s');
+          ?>
+					  <td><?php echo $dt->format('Y-m-d H:i:s');?></td>
 						</td>
 					</tr>
 					<?php
